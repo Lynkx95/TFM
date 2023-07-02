@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_model" value="fanuc_m10ia" doc="Type/series of used robot" />
+  <!--Common parameters  -->
+  <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface" doc="The hardware_interface to expose for each joint in the simulated robot (one of: [PositionJointInterface, VelocityJointInterface, EffortJointInterface])"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro $(find fanuc_gazebo)/urdf/m10ia.xacro
+    robot_model:=$(arg robot_model)
+    transmission_hw_interface:=$(arg transmission_hw_interface)"
+    />
+    <!--
+    joint_limit_params:=$(arg joint_limit_params)
+    kinematics_params:=$(arg kinematics_params)
+    physical_params:=$(arg physical_params)
+    visual_params:=$(arg visual_params)
+    -->
+</launch>

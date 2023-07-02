@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="fanuc_lrmate200i_gazebo" params="
+    prefix
+    transmission_hw_interface:=hardware_interface/PositionJointInterface">
+
+  <xacro:include filename="$(find fanuc_lrmate200i_support)/urdf/lrmate200i_macro.xacro"/>
+  <xacro:include filename="$(find fanuc_gazebo)/launch/inc/fanuc_transmissions.xacro"/>
+
+    <!-- Add URDF transmission elements (for ros_control) -->
+    <xacro:fanuc_transmission prefix="${prefix}" hw_interface="${transmission_hw_interface}" />
+
+    <!-- Instantiate model for the REAL robot. -->
+    <xacro:fanuc_lrmate200i prefix="${prefix}" />
+
+    <!-- Configure self collision properties per link -->
+    <gazebo reference="${prefix}base_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${prefix}link_1">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${prefix}link_2">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${prefix}link_3">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${prefix}link_4">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${prefix}link_5">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${prefix}link_6">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <!--
+      Inject Gazebo ROS Control plugin, which allows us to use ros_control
+      controllers to control the virtual robot hw.
+    -->
+    <gazebo>
+      <plugin name="ros_control" filename="libgazebo_ros_control.so">
+        <!--robotNamespace>/</robotNamespace-->
+        <!--robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType-->
+      </plugin>
+    </gazebo>
+  </xacro:macro>
+</robot>
