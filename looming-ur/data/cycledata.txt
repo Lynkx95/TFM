@@ -1,0 +1,27 @@
+Name: PointFile
+Text: cyclepoints
+Name: ScriptFile
+Text: cycle
+
+Name: Repeat
+Bool: True
+Name: LoadMachine
+Bool: False
+Name: UnloadMachine
+Bool: False
+Name: AskPickupPoint
+Bool: False
+Name: PickupPointSet
+Bool: False
+Name: ActivateGripper
+Bool: False
+Name: DeactivateGripper
+Bool: False
+Name: GripperActive
+Bool: False
+Name: GripperInactive
+Bool: True
+
+JS: elbow_joint shoulder_lift_joint shoulder_pan_joint wrist_1_joint wrist_2_joint wrist_3_joint
+Name: pinput
+Point: 0.0, 0.0, 0.0, 0.0, 0.0, 0.0

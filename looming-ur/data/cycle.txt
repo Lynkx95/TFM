@@ -1,0 +1,55 @@
+load cycledata
+moveto p0
+wait time 1
+while Repeat
+load cycledata
+wait time 1
+if LoadMachine
+set LoadMachine False
+set AskPickupPoint True
+wait var PickupPointSet
+set PickupPointSet False
+moveto pinput
+wait time 1
+set ActivateGripper True
+wait GripperActive
+moveto p0
+wait time 3
+moveto p1
+wait time 3
+moveto p2
+wait time 3
+set DeactivateGripper True
+wait GripperInactive
+moveto p2
+wait time 3
+moveto p1
+wait time 3
+moveto p0
+wait time 3
+else
+if UnloadMachine
+set UnloadMachine False
+moveto p0
+wait time 3
+moveto p2
+wait time 3
+moveto p1
+wait time 3
+set ActivateGripper True
+wait GripperActive
+moveto p3
+wait time 3
+moveto p4
+wait time 3
+set DeactivateGripper True
+wait GripperInactive
+moveto p4
+wait time 3
+moveto p3
+wait time 3
+moveto p0
+wait time 3
+endif
+endif
+endwhile

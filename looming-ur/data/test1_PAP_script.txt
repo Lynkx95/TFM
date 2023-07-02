@@ -1,0 +1,26 @@
+load cycledata
+moveto p0
+while Repeat
+wait time 1
+moveto PrePick
+wait time 1
+moveto Pick
+wait time 1
+set ActivateGripper True
+wait GripperActive
+wait time 1
+moveto PrePick
+wait time 1
+moveto Pass1
+wait time 1
+moveto Pass2
+wait time 1
+moveto PrePlace
+wait time 1
+moveto Place
+wait time 1
+set DeactivateGripper True
+wait GripperInactive
+wait time 1
+moveto PrePlace
+endwhile
